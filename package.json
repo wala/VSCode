@@ -1,0 +1,117 @@
+{
+        "name": "ariadne-vscode",
+        "displayName": "Ariadne: Analysis for ML code",
+        "description": "A language server client for ariadne and WALA",
+        "author": "Avi Shinnar",
+        "license": "EPL-2.0",
+        "version": "0.0.1",
+        "keywords": [
+                "linter",
+                "analysis",
+                "types",
+                "python",
+                "ML",
+                "Machine Learning",
+                "TensorFlow",
+                "WALA",
+                "Ariadne"
+        ],
+        "repository": {
+                "type": "git",
+                "url": "https://github.com/wala/VSCode"
+        },
+        "engines": {
+                "vscode": "^1.16.0"
+        },
+        "categories": [
+                "Languages",
+                "Linters"
+        ],
+        "activationEvents": [
+                "onLanguage:python",
+                "onCommand:extension.walaCheckIsRunning"
+        ],
+        "main": "./build/extension",
+        "publisher": "IBM Research",
+        "contributes": {
+                "configuration": {
+                        "type": "object",
+                        "title": "Ariadne (WALA lsp) configuration",
+                        "properties": {
+                                "ariadne.java.command": {
+                                        "type": "string",
+                                        "default": "java",
+                                        "description": "The java executable that will be used to run the server jar."
+                                },
+                                "ariadne.server.jar": {
+                                        "type": "string",
+                                        "default": "./lib/ariadne-server.jar",
+                                        "description": "The ariadne server jar."
+                                },
+                                "ariadne.debug": {
+                                        "type": "string",
+                                        "enum": [
+                                                "on",
+                                                "off",
+                                                "auto"
+                                        ],
+                                        "default": "auto",
+                                        "description": "Should the server start with debugging enabled?  Specifying \"auto\" enables debug mode if the client was started with debugging enabled"
+                                },
+                                "ariadne.debug.port": {
+                                        "type": "number",
+                                        "default": 8000,
+                                        "description": "If the server is started in debug mode, this is the port it will connect on"
+                                },
+                                "ariadne.debug.suspendOnStart": {
+                                        "type": "boolean",
+                                        "default": false,
+                                        "description": "If the server is started in debug mode, should it suspend on start (until a java debugger attaches to it)?"
+                                },
+                                "ariadne.trace.server": {
+                                        "type": "string",
+                                        "enum": [
+                                                "off",
+                                                "messages",
+                                                "debug"
+                                        ],
+                                        "default": "off",
+                                        "description": "What level of the tracing to enable for the client."
+                                },
+                                "ariadne.trace.client": {
+                                        "type": "string",
+                                        "enum": [
+                                                "off",
+                                                "messages",
+                                                "debug"
+                                        ],
+                                        "default": "off",
+                                        "description": "What level of the tracing to enable for the server. This value is not currently respected."
+                                },
+                                "ariadne.trace.output.channel": {
+                                        "type": "string",
+                                        "default": "Ariadne channel",
+                                        "description": "The name of the VSCode output channel that will be used for logging/tracing"
+                                }
+                        }
+                }
+        },
+        "scripts": {
+                "compile": "tsc -p ./",
+                "watch": "tsc -watch -p ./",
+                "vscode:prepublish": "npm run compile",
+                "update-vscode": "node ./node_modules/vscode/bin/install",
+                "postinstall": "node ./node_modules/vscode/bin/install",
+                "test": "npm run compile && node ./node_modules/vscode/bin/test"
+        },
+        "devDependencies": {
+                "@types/mocha": "^2.2.42",
+                "@types/node": "^9.6.6",
+                "tslint": "^5.8.0",
+                "typescript": "^2.8.3",
+                "vscode": "^1.1.5"
+        },
+        "dependencies": {
+                "vscode-languageclient": "^3.5.0"
+        }
+}
