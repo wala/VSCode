@@ -7,20 +7,18 @@ One day, it will probably be generalized to support using WALA via the LSP.
 
 At the moment, some setup is needed to use this plugin.  It has currently only been tested in debug mode.  At some point, we will package a release which will simplify all of this.
 
-At the moment, this has only been tested on a mac.  There is no reason it can't work on other systems as well.
+At the moment, this has only been tested on a mac.  There is no reason it shouldn't work on other systems as well.
 
 ### Dependencies
 First, you need to install all the dependencies.
 Ensure that you have Java >= 8 installed, as well as maven.
 
 Clone the following repositories:
-- https://github.com/wala/WALA
 - https://github.com/wala/IDE
 - https://github.com/wala/ML
 
-In the wala repo, run `./gradlew publishToMavenLocal`.  Make sure that it succeeds.  Good Luck!
 In the IDE repository, go into the `com.ibm.wala.cast.lsp` directory and run `mvn install`.
-In the ML repository, run `mvn install`.
+In the ML repository, go into the `com.ibm.wala.cast.python` directory and run `mvn install`.
 
 In your vscode settings, set
 `"ariadne.server.jar"` to the full path to the jar: 
@@ -67,7 +65,7 @@ You can use the "Debug (attach) ..." runner to debug the java server.
                                          "enum": [
                                                  "off",
                                                  "messages",
-                                                 "debug"
+                                                 "verbose"
                                          ],
                                          "default":"off",
                                          "description": "What level of the tracing to enable for the client."
@@ -77,7 +75,7 @@ You can use the "Debug (attach) ..." runner to debug the java server.
                                          "enum": [
                                                  "off",
                                                  "messages",
-                                                 "debug"
+                                                 "verbose"
                                          ],
                                          "default":"off",
                                          "description": "What level of the tracing to enable for the server. This value is not currently respected."

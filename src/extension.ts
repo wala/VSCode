@@ -98,14 +98,14 @@ export function activate(context: vscode.ExtensionContext) {
 			fileEvents: vscode.workspace.createFileSystemWatcher('**/.clientrc')
 		},
 		revealOutputChannelOn: RevealOutputChannelOn.Info,
-		outputChannel: walaOutputChannel,
+		outputChannel: walaOutputChannel
 	};
 
 	// Create the language client and start the client.
-	let client = new LanguageClient('ariadne', 'Language Server Client For Ariadne', serverOptions, clientOptions);
+	const client = new LanguageClient('ariadne', 'Language Server Client For Ariadne', serverOptions, clientOptions);
 	client.trace = trace;
 
-	let disposable = client.start();
+	const disposable = client.start();
 
 	// Push the disposable to the context's subscriptions so that the 
 	// client can be deactivated on extension deactivation
