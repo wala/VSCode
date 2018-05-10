@@ -66,7 +66,7 @@ export function activate(context: vscode.ExtensionContext) {
 			let vmArgs: string[] = [];
 
 			server.listen(() => {
-				const port = server.address().port;
+				const port = (server.address() as net.AddressInfo).port;
 				let commandArgs: string[] = ["-jar", jarPath, "--client-port", port.toString()];
 				if (isDebug) {
 					vmArgs.push("-agentlib:jdwp=transport=dt_socket,server=y,suspend=" + (isDebugSuspend ? "y" : "n") + ",address=" + debugPort);
