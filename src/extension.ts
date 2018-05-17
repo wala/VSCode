@@ -117,7 +117,4 @@ export function activate(context: vscode.ExtensionContext) {
 		serverProcess.kill();
 		walaOutputChannel.dispose();
 	}));
-
-	context.subscriptions.push(disposable);
-
 }
