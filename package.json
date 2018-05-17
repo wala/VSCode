@@ -6,15 +6,11 @@
         "license": "EPL-2.0",
         "version": "0.0.1",
         "keywords": [
-                "linter",
                 "analysis",
-                "types",
                 "python",
-                "ML",
                 "Machine Learning",
                 "TensorFlow",
-                "WALA",
-                "Ariadne"
+                "WALA"
         ],
         "repository": {
                 "type": "git",
@@ -32,7 +28,7 @@
                 "onCommand:extension.walaCheckIsRunning"
         ],
         "main": "./build/extension",
-        "publisher": "IBM Research",
+        "publisher": "WALA",
         "contributes": {
                 "configuration": {
                         "type": "object",
